@@ -1,0 +1,218 @@
+it is listing all shell scripts directory
+File: arrayex.sh
+comments.sh
+env.sh
+errors.sh
+expressions.sh
+ifexpr.sh
+iffile.sh
+ifthenelse1.sh
+ifthenelse.sh
+null.sh
+passvarcmd.sh
+readsample.sh
+sampleloop.sh
+substitution.sh
+testfile.sh
+test.sh
+varexample.sh Content: #!/bin/bash
+#this script is to show arrays
+
+SERVERLIST=("Webservero1" "webserver02" "webserver03")
+COUNT=0
+
+for index in ${SERVERLIST[@]}; do
+  echo "Processing server: ${SERVERLIST[COUNT]}"
+  COUNT="`expr $COUNT + 1`"
+done
+#!/bin/bash
+#this line is intended to describe the shell script and viewed only inside the script
+
+clear
+
+#MYUSERNAME="SANDEEP" #original username for this terminal
+MYUSERNAME="ABHI" #this is the user added later on
+echo "the default username of terminal is : $MYUSERNAME" #this is default username of the system
+
+TIMEANDDATE=`date`
+
+echo "the time and date of script is : $TIMEANDDATE" 
+#!/bin/bash
+
+clear
+
+echo "This script will give us environment information"
+echo "================================================="
+echo "Hello Username: $USER"
+echo ""
+echo "Your home directory is: $HOME"
+echo ""
+echo "Your history file will ignore: $HISTCONTROL"
+echo ""
+echo "Your terminal session Type is: $TERM"
+echo ""
+#!/bin/bash
+#this to show the error status
+
+set -e
+
+expr 1 + 5 
+echo $?
+
+rm noodles.sh
+echo $?
+
+expr 10 + 10
+echo $?
+
+#!/bin/bash
+#this is to evaluate expressions
+
+expr 2 + 2
+
+expr 2 + 2 \* 4
+
+expr \( 2 + 2 \) \* 4
+#!/bin/bash
+#this file is to test expression and readability
+
+FILENAME=$1
+echo "File is testing for $FILENAME and readability"
+
+if [ -f $FILENAME ] &&  [ -r $FILENAME ]
+   then
+    echo "File $FILENAME exists and readability!"
+fi
+
+#!/bin/bash
+#This file is to show how if statement works 
+
+echo "Guess the secret number"
+echo "======================="
+echo "please enter the number between 1 and 5"
+read GUESS
+
+if [ $GUESS -eq 3 ]
+  then
+   echo "You guessed the right number!"
+fi
+
+#!/bin/bash 
+# THis is to define the if then else statement 
+
+clear
+
+echo "Please enter number between 1 and 3"
+read VALUE
+
+if   [ "$VALUE" -eq "1" ] 2>/dev/null ; then
+  echo "You entered the number #1"
+elif [ "$VALUE" -eq "2" ] 2>/dev/null ; then
+ echo "You entered the number #2"
+elif [ "$VALUE" -eq "3" ] 2>/dev/null ; then
+ echo "You entered the number #3"
+else 
+ echo "You didnt follow instructions"
+fi
+#!/bin/bash
+#This iscript is to show how if then else condition works
+
+echo "please enter number between 1 and 3"
+read VALUE
+
+
+if [ "$VALUE" -eq "1" ] 2> /dev/null || [ "$VALUE" -eq "2" ] 2> /dev/null || [ "$VALUE" -eq "3" ] 2> /dev/null ; then
+   echo "You entered $VALUE"
+
+else 
+   echo "You didnt follow instructions"
+fi
+#!/bin/bash
+#this is about black hole device
+
+echo "this is displaying on console"
+
+echo "this is going to black hole" >> /dev/null
+
+#!/bin/bash
+#this is to show how we can pass variables to script at run time
+
+USERNAME=$1
+PASSWORD=$2
+
+echo "THe following username is $USERNAME and password is $PASSWORD"
+#!/bin/bash
+#this is about how we use read statement 
+
+echo "please enter your firstname"
+read FIRSTNAME
+echo "please enter your lastname"
+read LASTNAME
+echo ""
+echo "your full name is : $FIRSTNAME $LASTNAME"
+
+echo "please enter your age"
+read USERAGE
+echo ""
+echo "after 10 years your age will be `expr $USERAGE + 10`"
+ 
+#!/bin/bash 
+# This is to show how can we listout the files within in the shell script 
+
+echo "it is listing all shell scripts directory"
+
+SHELLSCRIPT=`ls *.sh`
+
+for SCRIPT in "$SHELLSCRIPT" ; do
+  DISPLAY="`cat $SCRIPT`"
+  echo "File: $SCRIPT Content: $DISPLAY"
+done
+#!/bin/bash
+#this script is intended to show how substitution works
+
+shopt -s expand_aliases
+
+alias TODAY="date"
+alias UFILES="find /home -user user"
+
+TODAYSDATE=`date`
+USERFILES=`find /home -user user`
+
+echo "todays date is : $TODAYSDATE"
+echo "all files in user : $USERFILES"
+
+A=`TODAY`
+B=`UFILES`
+
+echo "todays date : $A"
+echo "all files :$B"
+
+
+#!/bin/bash
+#this is to show how we can search file 
+
+FILENAME=$1
+echo "it is searching for file $FILENAME"
+
+if [ ! -f $FILENAME ]
+  then
+    echo "this $FILENAME does  exist!"
+fi
+#!/bin/bash
+
+clear
+
+echo "Hello world"
+#!/bin/bash
+
+MYUSERNAME="USERNAME"
+MYPASSWORD="PASSWORD123"
+LOGINDATE=`date`
+
+echo "the usernameof application is : $MYUSERNAME"
+echo "the password of this application is : $MYPASSWORD"
+echo "login date of this application date is : $LOGINDATE"
+
+SCRIPTDATE=`date`
+
+echo "the script start date of this application is : $SCRIPTDATE"
